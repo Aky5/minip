@@ -1,0 +1,10 @@
+import Orange
+data=Orange.data.Table("tst1")
+learner = Orange.classification.bayes.NaiveLearner()
+classifier = learner(data)
+data.domain.class_var.values
+for d in data[:10]:
+	t1=classifier(d)
+	t2=d.get_class()
+	ps=classifier(d,Orange.classification.Classifier.GetProbabilities)
+	print "%s,%5.3f;	originally %s,%5.3f" %(t1,ps[t1],t2,ps[t2])
